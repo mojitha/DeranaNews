@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const categorySchema = mongoose.Schema(
+const newsSchema = mongoose.Schema(
   {
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
@@ -16,8 +16,22 @@ const categorySchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    name: {
+    title: {
       type: String,
+      required: [true, "Please add a text value!"],
+    },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Category",
+    },
+    images: {
+      type: String,
+      required: true,
+    },
+    body: {
+      type: String,
+      required: true,
     },
   },
   {
@@ -25,4 +39,4 @@ const categorySchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model("News", newsSchema);

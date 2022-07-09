@@ -13,13 +13,15 @@ const getCategories = asyncHandler(async (req, res) => {
 // @route   POST /api/categories
 // @access  private
 const setCategory = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  if (!req.body.name) {
     res.status(400);
     throw new Error("Please add a text field!");
   }
   const category = await Category.create({
-    text: req.body.text,
-    user: req.user.id,
+    name: req.body.name,
+    createdBy: req.user.id,
+    modifiedBy: req.user.id,
+    status: true,
   });
   res.status(201).json({ category });
 });
@@ -41,7 +43,7 @@ const updateCategory = asyncHandler(async (req, res) => {
   }
 
   // make sure the logged in user matches the category user
-  if (category.user.toString() !== req.user.id) {
+  if (category.modifiedBy.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized!");
   }

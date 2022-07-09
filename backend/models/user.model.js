@@ -2,6 +2,20 @@ const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema(
   {
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: false,
+      ref: "User",
+    },
+    modifiedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: false,
+      ref: "User",
+    },
+    status: {
+      type: Boolean,
+      default: true,
+    },
     name: {
       type: String,
       required: [true, "Please add a name!"],
@@ -13,6 +27,10 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please add a password!"],
+    },
+    isAuthorized: {
+      type: Boolean,
+      default: false,
     },
   },
   {
