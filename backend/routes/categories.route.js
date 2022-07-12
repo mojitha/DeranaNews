@@ -8,7 +8,13 @@ const {
 } = require("../controllers/category.controller");
 const { protect } = require("../middleware/auth.middleware");
 
-router.route("/").get(protect, getCategories).post(protect, setCategory);
+router
+  .route("/")
+  .get(
+    // protect,
+    getCategories
+  )
+  .post(protect, setCategory);
 
 router
   .route("/:id")

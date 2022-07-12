@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+const cors = require("cors");
 const { errorHandler } = require("./middleware/error.middleware");
 const port = process.env.PORT || 5000;
 const connectDB = require("./config/db");
@@ -10,6 +11,9 @@ connectDB();
 
 // initialize app
 const app = express();
+
+// cors policy
+app.use(cors());
 
 // configure request body
 app.use(express.json());

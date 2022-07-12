@@ -5,7 +5,7 @@ const Category = require("../models/category.model");
 // @route   GET /api/categories
 // @access  private
 const getCategories = asyncHandler(async (req, res) => {
-  const categories = await Category.find({ user: req.user.id });
+  const categories = await Category.find();
   res.status(200).json({ categories });
 });
 
