@@ -19,9 +19,11 @@ const setCategory = asyncHandler(async (req, res) => {
   }
   const category = await Category.create({
     name: req.body.name,
-    createdBy: req.user.id,
-    modifiedBy: req.user.id,
-    status: true,
+    // createdBy: req.user.id,
+    createdBy: req.body.createdBy,
+    // modifiedBy: req.user.id,
+    modifiedBy: req.body.modifiedBy,
+    // status: true,
   });
   res.status(201).json({ category });
 });
@@ -37,16 +39,16 @@ const updateCategory = asyncHandler(async (req, res) => {
   }
 
   // check for user
-  if (!req.user) {
-    res.status(401);
-    throw new Error("User not found!");
-  }
+  // if (!req.user) {
+  //   res.status(401);
+  //   throw new Error("User not found!");
+  // }
 
   // make sure the logged in user matches the category user
-  if (category.modifiedBy.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized!");
-  }
+  // if (category.modifiedBy.toString() !== req.user.id) {
+  //   res.status(401);
+  //   throw new Error("User not authorized!");
+  // }
 
   const updatedCategory = await Category.findByIdAndUpdate(
     req.params.id,

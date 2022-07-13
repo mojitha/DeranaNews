@@ -14,11 +14,17 @@ router
     // protect,
     getCategories
   )
-  .post(protect, setCategory);
+  .post(
+    // protect,
+    setCategory
+  );
 
 router
   .route("/:id")
-  .put(protect, updateCategory)
+  .put(
+    // protect,
+    updateCategory
+  )
   .delete(protect, deleteCategory);
 
 module.exports = router;
