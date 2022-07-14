@@ -8,23 +8,11 @@ const {
 } = require("../controllers/category.controller");
 const { protect } = require("../middleware/auth.middleware");
 
-router
-  .route("/")
-  .get(
-    // protect,
-    getCategories
-  )
-  .post(
-    // protect,
-    setCategory
-  );
+router.route("/").get(getCategories).post(protect, setCategory);
 
 router
   .route("/:id")
-  .put(
-    // protect,
-    updateCategory
-  )
+  .put(protect, updateCategory)
   .delete(protect, deleteCategory);
 
 module.exports = router;

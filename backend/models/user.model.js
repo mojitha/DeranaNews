@@ -16,6 +16,14 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    isEditor: {
+      type: Boolean,
+      default: false,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     name: {
       type: String,
       required: [true, "Please add a name!"],
@@ -27,10 +35,6 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please add a password!"],
-    },
-    isAuthorized: {
-      type: Boolean,
-      default: false,
     },
   },
   {
