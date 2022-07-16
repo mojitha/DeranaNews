@@ -11,7 +11,7 @@
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "cd frontend && npm run build",
-    "install-client": "cd frontend && npm install",
+    "install-client": "cd frontend && npm install --no-optional",
     "heroku-postbuild": "npm run install-client && npm run build"
   },
   "keywords": [],
