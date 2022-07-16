@@ -31,5 +31,8 @@
     "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.4"
+  },
+  "optionalDependencies": {
+    "fsevents": "2.1.2"
   }
 }
